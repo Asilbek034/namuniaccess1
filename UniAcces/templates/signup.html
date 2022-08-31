@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block mycontent %}
+    <div class="container  bg-dark">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card shadow p-4">
+                    <form method="post">
+                        {% csrf_token %}
+                        {% if status %}
+                            <div class="alert {{col}}">
+                                {{status}}
+                            </div>
+                        {% endif %}
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" placeholder="username" name="username" required></input>
+                        </div>
+                         <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="email" name="email" required></input>
+                        </div>
+                         <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" placeholder="password" name="password" required></input>
+                        </div>
+                        <div class="mb-3">
+                               <div class="g-recaptcha" data-sitekey="6LedVMAhAAAAACi30C1beCKdhRZJgb3MtXvxzp0X"></div>
+                        </div>
+                        <button type="submit" class="btn btn-success mt-2">SignUp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
